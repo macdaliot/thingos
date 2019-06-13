@@ -1,4 +1,6 @@
 #!/bin/sh
 
-sed -i 's/initrd_filename=/#initrd_filename=/' /boot/uEnv.txt
-
+if [ -f /boot/boot-normal.scr ]; then
+    mv /boot/boot.scr /boot/boot-fwupdater.scr
+    mv /boot/boot-normal.scr /boot/boot.scr
+fi

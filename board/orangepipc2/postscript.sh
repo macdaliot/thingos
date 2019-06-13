@@ -2,11 +2,9 @@
 
 set -e
 
-# boot directory
-mkdir -p ${BOOT_DIR}/pine64
+${HOST_DIR}/bin/mkimage -C none -A arm -T script -d ${BOARD_DIR}/boot.cmd ${BOOT_DIR}/boot.scr
+${HOST_DIR}/bin/mkimage -C none -A arm -T script -d ${BOARD_DIR}/boot-fwupdater.cmd ${BOOT_DIR}/boot-fwupdater.scr
 
-cp ${IMG_DIR}/Image ${BOOT_DIR}/kernel.img
-cp ${BOARD_DIR}/uEnv.txt ${BOOT_DIR}
-cp ${BOARD_DIR}/dtb/* ${BOOT_DIR}/pine64
-cp ${BOARD_DIR}/fwupdater.img ${BOOT_DIR}
-
+cp ${IMG_DIR}/Image ${BOOT_DIR}
+cp ${IMG_DIR}/sun50i-h5-orangepi-pc2.dtb ${BOOT_DIR}
+cp ${BOARD_DIR}/uInitrd ${BOOT_DIR}
